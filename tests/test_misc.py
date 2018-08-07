@@ -1,5 +1,5 @@
 import json
-import re
+from os import environ
 from os.path import join, dirname, normpath
 from subprocess import check_call, Popen, PIPE
 
@@ -33,7 +33,8 @@ def test_01():
 
             with TerraformWorkspace('test_01_b', 'test-01-b') as ws_main:
                 var_args = '-var "load_balancer_arn=' + load_balancer_arn + '" ' \
-                           '-var "target_group_arn=' + nginx_target_group_arn + '"'
+                           '-var "target_group_arn=' + nginx_target_group_arn + '" ' \
+                           '-var "certificate_arn=' + environ['CERTIFICATE_ARN'] + '"'
                 process = Popen('terraform apply -auto-approve -no-color ' + var_args, cwd=ws_main.working_directory,
                                 stdout=PIPE, stdin=PIPE)
                 stdout, stderr = process.communicate()

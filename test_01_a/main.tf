@@ -130,6 +130,11 @@ resource "aws_instance" "nginx" {
     Environment = "${terraform.workspace}"
   }
 
+  volume_tags {
+    Name = "${terraform.workspace}--nginx"
+    Environment = "${terraform.workspace}"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo yum install -y epel-release",
@@ -161,12 +166,4 @@ resource "aws_lb_target_group_attachment" "nginx" {
   port = 80
   target_group_arn = "${aws_lb_target_group.nginx.arn}"
   target_id = "${aws_instance.nginx.id}"
-}
-
-variable "root_hosted_zone_id" {
-  default = "Z215JYRZR1TBD5"
-}
-
-variable "root_host_name" {
-  default = "ak-test.me.uk"
 }
