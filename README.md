@@ -27,6 +27,12 @@ pip install -U -r requirements.txt
 
 ## Test
 
+With terraform installed into a directory presented in environment variable `PATH`;
+
+With a certificate issued in region `eu-central-1` (use its ARN in the following console code);
+
+Run:
+
 ```console
 export CERTIFICATE_ARN=arn:aws:acm:eu-central-1:012345678901:certificate/01234567-89ab-cdef-0123-456789abcdef
 pytest tests
