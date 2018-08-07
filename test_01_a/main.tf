@@ -1,11 +1,3 @@
-//terraform {
-//  backend "s3" {
-//    bucket = "terraform-backend-home-site-alexeykuptsov-com"
-//    key    = "terraform.tfstate"
-//    region = "eu-central-1"
-//  }
-//}
-//
 provider "aws" {
   region = "eu-central-1"
 }
@@ -103,11 +95,6 @@ resource "aws_lb" "default" {
     Environment = "${terraform.workspace}"
   }
 }
-
-variable "youtrack_version" {
-  default = "2017.4.39406"
-}
-
 
 resource "aws_security_group" "nginx" {
   name        = "${terraform.workspace}--nginx"

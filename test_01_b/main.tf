@@ -1,5 +1,8 @@
+provider "aws" {
+  region = "eu-central-1"
+}
+
 variable certificate_arn {
-  default = "arn:aws:acm:eu-central-1:251104947269:certificate/67574c29-c39b-4082-ae36-ba1384a2ecfe"
 }
 
 variable target_group_arn {

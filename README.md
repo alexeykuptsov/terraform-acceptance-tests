@@ -28,5 +28,6 @@ pip install -U -r requirements.txt
 ## Test
 
 ```console
+export CERTIFICATE_ARN=arn:aws:acm:eu-central-1:012345678901:certificate/01234567-89ab-cdef-0123-456789abcdef
 pytest tests
 ```
